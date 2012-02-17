@@ -12,7 +12,7 @@ public class ProblemTemplate {
 		Scanner input = new Scanner(System.in);
 		
 		System.out.println("Place descriptive text here.");
-		System.out.println("Please enter a value for x:");
+		System.out.print("Please enter a value for x:");
 		int num = input.nextInt();
 		long start = System.currentTimeMillis();
 		
