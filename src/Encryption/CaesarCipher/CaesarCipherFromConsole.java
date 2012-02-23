@@ -1,13 +1,19 @@
-package Encryption;
-import java.io.PrintWriter;
+package Encryption.CaesarCipher;
+
+import java.io.*;
 import java.util.Scanner;
 
-public class CaesarCipher {
+public class CaesarCipherFromConsole {
 	
-	/**
-	 * @param args
-	 * Paste problem text here and format.
-	 */
+	public static char[] alphabetLowercase = {'a','b','c','d','e','f','g','h','i','j',
+			'k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+	
+	public static char[] alphabetUppercase = {'A','B','C','D','E','F','G','H','I','J',
+			'K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+	
+	public static char[] otherChars = {'!','@','#','$','%','^','&','*','(',')','_',
+		'+','1','2','3','4','5','6','7','8','9','0','-','=','[',']','{','}','\\','|',
+		';',':','\'','"',',','<','.','>','/','?','`','~'};
 	
 	public static void main(String[] args){
 		System.out.println("This program will either encrypt or decrypt a string of text using the Caesar Cipher.");
@@ -16,9 +22,6 @@ public class CaesarCipher {
 	} // end method main
 
 	public static String encrypt(int shift, String text){
-		char[] alphabetLowercase = { 'a', 'b', 'c', 'd', 'e', 'f', 'g',
-				'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-				'u', 'v', 'w', 'x', 'y', 'z' };
 		char[] textChars = text.toCharArray();
 		
 		int textSize = text.length();
@@ -32,17 +35,31 @@ public class CaesarCipher {
 				
 			}
 			else{
-				for (int i=0; i<=25; i++){
-					if (text.charAt(textCounter) == ' '){
+				for (int i=0; i<=41; i++){
+					if (text.charAt(textCounter) == otherChars[i]){
+						int modShift = i+shift;
+						if (modShift > 41){
+							modShift -= 42;
+						}
+						textChars[textCounter] = otherChars[modShift];
 						textCounter = textCounter + 1;
 						break;
 					}
-					if (text.charAt(textCounter) == alphabetLowercase[i]){
+					if (i <= 25 && text.charAt(textCounter) == alphabetLowercase[i]){
 						int modShift = i+shift;
 						if (modShift > 25){
 							modShift -= 26;
 						}
 						textChars[textCounter] = alphabetLowercase[modShift];
+						textCounter = textCounter + 1;
+						break;
+					}
+					if (i <= 25 && text.charAt(textCounter) == alphabetUppercase[i]){
+						int modShift = i+shift;
+						if (modShift > 25){
+							modShift -= 26;
+						}
+						textChars[textCounter] = alphabetUppercase[modShift];
 						textCounter = textCounter + 1;
 						break;
 					}
@@ -56,9 +73,6 @@ public class CaesarCipher {
 	}
 	
 	public static String decrypt(int shift, String text){
-		char[] alphabetLowercase = { 'a', 'b', 'c', 'd', 'e', 'f', 'g',
-				'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-				'u', 'v', 'w', 'x', 'y', 'z' };
 		char[] textChars = text.toCharArray();
 		
 		int textSize = text.length();
@@ -72,17 +86,31 @@ public class CaesarCipher {
 				
 			}
 			else{
-				for (int i=0; i<=25; i++){
-					if (text.charAt(textCounter) == ' '){
+				for (int i=0; i<=41; i++){
+					if (text.charAt(textCounter) == otherChars[i]){
+						int modShift = i-shift;
+						if (modShift < 0 ){
+							modShift += 42;
+						}
+						textChars[textCounter] = otherChars[modShift];
 						textCounter = textCounter + 1;
 						break;
 					}
-					if (text.charAt(textCounter) == alphabetLowercase[i]){
+					if (i <= 25 && text.charAt(textCounter) == alphabetLowercase[i]){
 						int modShift = i-shift;
 						if (modShift < 0 ){
 							modShift += 26;
 						}
 						textChars[textCounter] = alphabetLowercase[modShift];
+						textCounter = textCounter + 1;
+						break;
+					}
+					if (i <= 25 && text.charAt(textCounter) == alphabetUppercase[i]){
+						int modShift = i-shift;
+						if (modShift < 0 ){
+							modShift += 26;
+						}
+						textChars[textCounter] = alphabetUppercase[modShift];
 						textCounter = textCounter + 1;
 						break;
 					}
@@ -100,8 +128,9 @@ public class CaesarCipher {
 			
 		System.out.print("For encryption enter 1; For decryption enter 2:");
 		int type = input.nextInt();
-		System.out.println("Enter the text to be worked on (all lowercase, please).");
+		System.out.println("Enter the text to be worked on.");
 		String text = input.next();
+		
 		
 		System.out.print("Choose the amount of the shift (0 - 26):");
 		int shift = input.nextInt();
