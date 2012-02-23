@@ -11,7 +11,7 @@ public class CaesarCipherFromConsole {
 	public static char[] alphabetUppercase = {'A','B','C','D','E','F','G','H','I','J',
 			'K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 	
-	public static char[] otherChars = {'!','@','#','$','%','^','&','*','(',')','_',
+	public static char[] otherChars = {' ','!','@','#','$','%','^','&','*','(',')','_',
 		'+','1','2','3','4','5','6','7','8','9','0','-','=','[',']','{','}','\\','|',
 		';',':','\'','"',',','<','.','>','/','?','`','~'};
 	
@@ -20,7 +20,41 @@ public class CaesarCipherFromConsole {
 		body();
 		System.out.println("End of Program.");
 	} // end method main
+	
+	private static void body(){
+		Scanner input = new Scanner(System.in).useDelimiter("\r\n");
+			
+		System.out.print("For encryption enter 1; For decryption enter 2:");
+		int type = input.nextInt();
+		System.out.println("Enter the text to be worked on.");
+		String text = input.next();
+		
+		System.out.print("Choose the amount of the shift (0 - 26):");
+		int shift = input.nextInt();
+		
+		if (type == 1){
+			System.out.println("Encrypted text: "+encrypt(shift, text));
 
+
+		}
+		else if (type == 2){
+			System.out.println("Decrypted text: "+decrypt(shift, text));
+		}
+		else{
+			System.out.println("Please enter a valid choice.  Either 1 or 2.");
+			body();
+		}
+		
+		System.out.println("Would you like to perform another encryption/decryption?");
+		System.out.print("Enter 1 for Yes:");
+		int another = input.nextInt();
+		
+		if(another == 1){
+			System.out.println("***************************************");
+			body();
+		}
+		else ;
+	}
 	public static String encrypt(int shift, String text){
 		char[] textChars = text.toCharArray();
 		
@@ -35,11 +69,11 @@ public class CaesarCipherFromConsole {
 				
 			}
 			else{
-				for (int i=0; i<=41; i++){
+				for (int i=0; i<=42; i++){
 					if (text.charAt(textCounter) == otherChars[i]){
 						int modShift = i+shift;
-						if (modShift > 41){
-							modShift -= 42;
+						if (modShift > 42){
+							modShift -= 43;
 						}
 						textChars[textCounter] = otherChars[modShift];
 						textCounter = textCounter + 1;
@@ -86,11 +120,11 @@ public class CaesarCipherFromConsole {
 				
 			}
 			else{
-				for (int i=0; i<=41; i++){
+				for (int i=0; i<=42; i++){
 					if (text.charAt(textCounter) == otherChars[i]){
 						int modShift = i-shift;
 						if (modShift < 0 ){
-							modShift += 42;
+							modShift += 43;
 						}
 						textChars[textCounter] = otherChars[modShift];
 						textCounter = textCounter + 1;
@@ -123,40 +157,6 @@ public class CaesarCipherFromConsole {
 		return dText;
 	}
 	
-	private static void body(){
-		Scanner input = new Scanner(System.in);
-			
-		System.out.print("For encryption enter 1; For decryption enter 2:");
-		int type = input.nextInt();
-		System.out.println("Enter the text to be worked on.");
-		String text = input.next();
-		
-		
-		System.out.print("Choose the amount of the shift (0 - 26):");
-		int shift = input.nextInt();
-		
-		if (type == 1){
-			System.out.println("Encrypted text: "+encrypt(shift, text));
 
-
-		}
-		else if (type == 2){
-			System.out.println("Decrypted text: "+decrypt(shift, text));
-		}
-		else{
-			System.out.println("Please enter a valid choice.  Either 1 or 2.");
-			body();
-		}
-		
-		System.out.println("Would you like to perform another encryption/decryption?");
-		System.out.print("Enter 1 for Yes:");
-		int another = input.nextInt();
-		
-		if(another == 1){
-			System.out.println("***************************************");
-			body();
-		}
-		else ;
-	}
 
 } // end class CaesarCipher

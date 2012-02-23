@@ -9,5 +9,4 @@ public class CaesarCipherTest {
 		// TODO Auto-generated method stub
 
 	}
-
 }
