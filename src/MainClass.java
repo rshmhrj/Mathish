@@ -5,7 +5,6 @@ public class MainClass {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		CallingMethod method = new CallingMethod();
 		System.out.println("Addition: " + method.add(30,15));
 		System.out.println("Subtraction: " + method.subtract(30,15));

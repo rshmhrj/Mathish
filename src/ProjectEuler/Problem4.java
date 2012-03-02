@@ -10,7 +10,7 @@ public class Problem4 {
 	 * Find the largest palindrome made from the product of two 3-digit numbers.
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// TODO String Manipulation to see if t
 
 	}
 
