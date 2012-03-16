@@ -12,9 +12,9 @@ public class KaratsubaMultiplication {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Karatsuba Multiplication Program.");
 		System.out.println("Please enter the first integer:");
-		int x = input.nextInt();
+		long x = input.nextLong();
 		System.out.println("Please enter the second integer:");
-		int y = input.nextInt();
+		long y = input.nextLong();
 		
 		System.out.println("Karatsuba Method = " + karatsuba(x,y));
 		System.out.println("Normal Method = " + x*y);
@@ -24,33 +24,45 @@ public class KaratsubaMultiplication {
 
 	}
 
-	public static int karatsuba(int x, int y){
+	public static long karatsuba(long x, long y){
 		System.out.println(x + " * " + y + " = ");
 		int n = (findLength(x));
-		int a = splitFirst(x);
-		int b = splitSecond(x,a);
-		int c = splitFirst(y);
-		int d = splitSecond(y,c);
-		System.out.println("a = " + a + " and b = " + b);
-		System.out.println("c = " + c + " and d = " + d);
-		int product = (int) ((Math.pow(10, n) * karatsuba(a,c)) + (Math.pow(10,n/2) * (karatsuba(a,d) + karatsuba(b,c))));
-		return product;
+		long z = 1;
+		if (n <= 2){
+			z = x*y;
+			System.out.println(z);
+			return z;
+		}
+		else{
+			long a = splitFirst(x);
+			long b = splitSecond(x,a);
+			long c = splitFirst(y);
+			long d = splitSecond(y,c);
+			System.out.println("a = " + a + " and b = " + b);
+			System.out.println("c = " + c + " and d = " + d);
+			long ac = karatsuba(a,c);
+			long bd = karatsuba(b,d);
+			long adbc = (a+b)*(c+d)-ac-bd;
+			z = (long) ((findPower(n,1) * ac) + (findPower(n,2) *(adbc) + bd));
+			System.out.println(z);
+			return z;
+		}
 	}
 	
-	public static int splitFirst(int x){
-		int a = (int) (x / findPower(findLength(x)));
+	public static long splitFirst(long x){
+		long a = x / findPower(findLength(x),2);
 		return a;
 	}
-	public static int splitSecond(int x, int a){
-		int b = x - (int) (a * findPower(findLength(x)));
+	public static long splitSecond(long x, long a){
+		long b = x - (int) (a * findPower(findLength(x),2));
 		return b;
 	}
-	public static int findLength(int x){
-		int n = Integer.toString(x).length();
+	public static int findLength(long x){
+		int n = Long.toString(x).length();
 		return n;
 	}
-	public static int findPower(int n){
-		int power = (int)(Math.pow(10, n/2));
+	public static long findPower(long n, int x){
+		long power = (long)(Math.pow(10, n/x));
 		return power;
 	}
 	
