@@ -1,5 +1,6 @@
 package lc.igbc.encryption;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class CaesarCipher {
@@ -10,8 +11,9 @@ public class CaesarCipher {
 
 	/**
 	 * @param args
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		
 		System.out.println("Caesar Cipher program.");
@@ -22,7 +24,7 @@ public class CaesarCipher {
 		System.out.println("End of Program");
 	}
 	
-	public static void Continue() {
+	public static void Continue() throws IOException {
 		if (type == 1){
 			Encryption.Encrypt();
 		}
@@ -83,7 +85,7 @@ public class CaesarCipher {
 		}
 	}
 	
-	public static void toContinue(){
+	public static void toContinue() throws IOException{
 		if (isValidType(type) && isValidShift(shift)){
 			Continue();
 		}
@@ -97,7 +99,7 @@ public class CaesarCipher {
 		}
 	}
 	
-	public static void setsToContinue(){
+	public static void setsToContinue() throws IOException{
 		setType();
 		setShift();
 		toContinue();

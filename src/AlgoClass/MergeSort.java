@@ -37,7 +37,8 @@ public class MergeSort {
 			int[] c = new int[n/2];
 			System.arraycopy(x, 0, b, 0, n/2);
 			System.arraycopy(x, n/2, c, 0, n/2);
-		
+			System.arraycopy(src, srcPos, dest, destPos, len)
+			return x;
 		}
 	}
 
