@@ -15,14 +15,14 @@ public class MergeSort {
 		Scanner input = new Scanner(System.in);
 		
 		System.out.println("Please enter the size of the array to create.");
-		int n = input.nextInt();
+		int arrayLength = input.nextInt();
 		
-		int[] A = new int[n];
-		A = createRandomArray(n);
+		int[] A = new int[arrayLength];
+		A = createRandomArray(arrayLength);
 		System.out.println("Original   Array: " + Arrays.toString(A));
 		
 		long myStartTime = System.currentTimeMillis();
-			int[] mySort = sortArray(A);
+			int[] mySort = sortArray(A, arrayLength);
 			System.out.println("My  Sorted Array: " + Arrays.toString(mySort));
 		long myEndTime = System.currentTimeMillis();
 		
@@ -30,8 +30,8 @@ public class MergeSort {
 
 	
 		long regStartTime = System.currentTimeMillis();
-			int[] regularSort = new int[n];
-			System.arraycopy(A, 0, regularSort, 0, n);
+			int[] regularSort = new int[arrayLength];
+			System.arraycopy(A, 0, regularSort, 0, arrayLength);
 			Arrays.sort(regularSort);
 		long regEndTime = System.currentTimeMillis();
 		
@@ -41,14 +41,14 @@ public class MergeSort {
 		System.out.println("My  time: " + myTime);
 		System.out.println("Reg time: " + regTime);
 		
-		again(A,n);
+		again(A,arrayLength);
 	}
 	
-		public static void body(int[] A, int n){
+		public static void body(int[] A, int arrayLength){
 		System.out.println("Original   Array: " + Arrays.toString(A));
 		
 		long myStartTime = System.currentTimeMillis();
-			int[] mySort = sortArray(A);
+			int[] mySort = sortArray(A,arrayLength);
 			System.out.println("My  Sorted Array: " + Arrays.toString(mySort));
 		long myEndTime = System.currentTimeMillis();
 		
@@ -56,8 +56,8 @@ public class MergeSort {
 	
 		
 		long regStartTime = System.currentTimeMillis();
-			int[] regularSort = new int[n];
-			System.arraycopy(A, 0, regularSort, 0, n);
+			int[] regularSort = new int[arrayLength];
+			System.arraycopy(A, 0, regularSort, 0, arrayLength);
 			Arrays.sort(regularSort);
 		long regEndTime = System.currentTimeMillis();
 		
@@ -67,58 +67,60 @@ public class MergeSort {
 		System.out.println("My  time: " + myTime);
 		System.out.println("Reg time: " + regTime);
 		
-		again(A,n);
+		again(A,arrayLength);
 		
 	}
 
-	public static int[] sortArray(int[] X) {
-		int n = X.length;
-		int n1;
-		int n2;
-		if (!isEven(n)){
-			float nFloat = n;
-			n1 = (int) Math.floor(nFloat/2);
-			n2 = (int) Math.ceil(nFloat/2);
-		}
-		else{
-			n1 = n/2;
-			n2 = n/2;
-		}
-		if (n == 1 || n == 0) {
+	public static int[] sortArray(int[] X, int A_length) {
+		switch(A_length){
+//		case 0:
+//			return X;
+		case 1:
 			return X;
-		}
-		else {
-			int[] A = new int[n];
-			int[] B = new int[n1];
-			int[] C = new int[n2];
-			System.arraycopy(X, 0, B, 0, n1);
-			System.arraycopy(X, n1, C, 0, n2);
-			B = sortArray(B);
-			C = sortArray(C);
-			A = mergeArray(B,C);
-			return A;
+		default:
+			{		
+				int B_length;
+				int C_length;
+				if (!isEven(A_length)){
+					float A_length_float = A_length;
+					B_length = (int) Math.floor(A_length_float/2);
+					C_length = (int) Math.ceil(A_length_float/2);
+				}
+				else{
+					B_length = A_length/2;
+					C_length = A_length/2;
+				}
+				int[] A = new int[A_length];
+				int[] B = new int[B_length];
+				int[] C = new int[C_length];
+				System.arraycopy(X, 0, B, 0, B_length);
+				System.arraycopy(X, B_length, C, 0, C_length);
+				B = sortArray(B,B_length);
+				C = sortArray(C,C_length);
+				A = mergeArray(A_length,B,B_length,C,C_length);
+				return A;
+			}
 		}
 	}
 
-	public static int[] mergeArray(int[] B, int[] C) {
-		int n = B.length + C.length;
-		if(n == 2){
-			int[] D = new int[2];
-			if (B[0]<C[0]) {
-				D[0] = B[0];
-				D[1] = C[0];
-			}
-			else{
-				D[0] = C[0];
-				D[1] = B[0];	
-			}
-			return D;
-		}
-		int[] D = new int[n];
+	public static int[] mergeArray(int A_length, int[] B, int B_length, int[] C, int C_length) {
+//		if(n == 2){
+//			int[] D = new int[2];
+//			if (B[0]<C[0]) {
+//				D[0] = B[0];
+//				D[1] = C[0];
+//			}
+//			else{
+//				D[0] = C[0];
+//				D[1] = B[0];	
+//			}
+//			return D;
+//		}
+		int[] D = new int[A_length];
 		int i = 0;
 		int j = 0;
-		for (int k = 0; k < D.length; k++) {
-			if (i < B.length && j < C.length){
+		for (int k = 0; k < A_length; k++) {
+			if (i < B_length && j < C_length){
 				if(B[i] < C[j]){
 					D[k] = B[i];
 					i++;
@@ -128,11 +130,11 @@ public class MergeSort {
 					j++;
 				}
 			}
-			else if(i<B.length && j>=C.length){
+			else if(j>=C_length && i<B_length){
 				D[k] = B[i];
 				i++;
 			}
-			else if(i>=B.length && j<C.length){
+			else if(i>=B_length && j<C_length){
 				D[k] = C[j];
 				j++;
 			}
