@@ -24,18 +24,18 @@ public class MergeSort {
 		long myStartTime = System.currentTimeMillis();
 			int[] mySort = sortArray(A);
 			System.out.println("My  Sorted Array: " + Arrays.toString(mySort));
-			long myEndTime = System.currentTimeMillis();
+		long myEndTime = System.currentTimeMillis();
 		
-			long myTime = myEndTime-myStartTime;
+		long myTime = myEndTime-myStartTime;
 
 	
-			long regStartTime = System.currentTimeMillis();
+		long regStartTime = System.currentTimeMillis();
 			int[] regularSort = new int[n];
 			System.arraycopy(A, 0, regularSort, 0, n);
 			Arrays.sort(regularSort);
-			long regEndTime = System.currentTimeMillis();
+		long regEndTime = System.currentTimeMillis();
 		
-			long regTime = regEndTime-regStartTime;
+		long regTime = regEndTime-regStartTime;
 		
 		System.out.println("Reg Sorted Array: " + Arrays.toString(regularSort));
 		System.out.println("My  time: " + myTime);
@@ -50,18 +50,18 @@ public class MergeSort {
 		long myStartTime = System.currentTimeMillis();
 			int[] mySort = sortArray(A);
 			System.out.println("My  Sorted Array: " + Arrays.toString(mySort));
-			long myEndTime = System.currentTimeMillis();
+		long myEndTime = System.currentTimeMillis();
 		
-			long myTime = myEndTime-myStartTime;
-
+		long myTime = myEndTime-myStartTime;
 	
-			long regStartTime = System.currentTimeMillis();
+		
+		long regStartTime = System.currentTimeMillis();
 			int[] regularSort = new int[n];
 			System.arraycopy(A, 0, regularSort, 0, n);
 			Arrays.sort(regularSort);
-			long regEndTime = System.currentTimeMillis();
+		long regEndTime = System.currentTimeMillis();
 		
-			long regTime = regEndTime-regStartTime;
+		long regTime = regEndTime-regStartTime;
 		
 		System.out.println("Reg Sorted Array: " + Arrays.toString(regularSort));
 		System.out.println("My  time: " + myTime);
