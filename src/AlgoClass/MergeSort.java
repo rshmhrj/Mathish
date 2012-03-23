@@ -1,37 +1,74 @@
 package AlgoClass;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
-@SuppressWarnings("javadoc")
 public class MergeSort {
 
 	public static void main(String[] args) {
 		System.out.println("This program will sort an array.");
-//		int A[] = { 5, 4, 1, 8, 7, 2, 6, 3, 9 };
-		int n = 100;
+		body();
+		System.out.println("End of Program.");
+	}
+	
+	public static void body(){
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Please enter the size of the array to create.");
+		int n = input.nextInt();
+		
 		int[] A = new int[n];
 		A = createRandomArray(n);
-		System.out.println("Original Array: " + Arrays.toString(A));
-		double myStartTime = System.currentTimeMillis();
+		System.out.println("Original   Array: " + Arrays.toString(A));
+		
+		long myStartTime = System.currentTimeMillis();
 			int[] mySort = sortArray(A);
 			System.out.println("My  Sorted Array: " + Arrays.toString(mySort));
-		double myEndTime = System.currentTimeMillis();
+			long myEndTime = System.currentTimeMillis();
 		
-		double myTime = myEndTime-myStartTime;
+			long myTime = myEndTime-myStartTime;
 
-		
-
-		double regStartTime = System.currentTimeMillis();
-			int[] regularSort = A;
+	
+			long regStartTime = System.currentTimeMillis();
+			int[] regularSort = new int[n];
+			System.arraycopy(A, 0, regularSort, 0, n);
 			Arrays.sort(regularSort);
-		double regEndTime = System.currentTimeMillis();
+			long regEndTime = System.currentTimeMillis();
 		
-		double regTime = regEndTime-regStartTime;
+			long regTime = regEndTime-regStartTime;
 		
 		System.out.println("Reg Sorted Array: " + Arrays.toString(regularSort));
 		System.out.println("My  time: " + myTime);
 		System.out.println("Reg time: " + regTime);
-		System.out.println("End of Program.");
+		
+		again(A,n);
+	}
+	
+		public static void body(int[] A, int n){
+		System.out.println("Original   Array: " + Arrays.toString(A));
+		
+		long myStartTime = System.currentTimeMillis();
+			int[] mySort = sortArray(A);
+			System.out.println("My  Sorted Array: " + Arrays.toString(mySort));
+			long myEndTime = System.currentTimeMillis();
+		
+			long myTime = myEndTime-myStartTime;
+
+	
+			long regStartTime = System.currentTimeMillis();
+			int[] regularSort = new int[n];
+			System.arraycopy(A, 0, regularSort, 0, n);
+			Arrays.sort(regularSort);
+			long regEndTime = System.currentTimeMillis();
+		
+			long regTime = regEndTime-regStartTime;
+		
+		System.out.println("Reg Sorted Array: " + Arrays.toString(regularSort));
+		System.out.println("My  time: " + myTime);
+		System.out.println("Reg time: " + regTime);
+		
+		again(A,n);
+		
 	}
 
 	public static int[] sortArray(int[] X) {
@@ -42,30 +79,14 @@ public class MergeSort {
 			float nFloat = n;
 			n1 = (int) Math.floor(nFloat/2);
 			n2 = (int) Math.ceil(nFloat/2);
-//			System.out.println("n1 = " + n1 + "; n2 = " + n2);
 		}
 		else{
 			n1 = n/2;
 			n2 = n/2;
-//			System.out.println("n1 = " + n1 + "; n2 = " + n2);
 		}
 		if (n == 1 || n == 0) {
 			return X;
 		}
-//		else if(n == 2){
-//			int y = X[0];
-//			int z = X[1];
-//			int[] sorted = new int[2];
-//			if (y < z){
-//				sorted[0] = y;
-//				sorted[1] = z;
-//			}
-//			else{
-//				sorted[0] = z;
-//				sorted[1] = y;
-//			}
-//			return sorted;
-//		}
 		else {
 			int[] A = new int[n];
 			int[] B = new int[n1];
@@ -75,9 +96,6 @@ public class MergeSort {
 			B = sortArray(B);
 			C = sortArray(C);
 			A = mergeArray(B,C);
-//			System.out.println("A = " + Arrays.toString(A));
-//			System.out.println("B = " + Arrays.toString(B));
-//			System.out.println("C = " + Arrays.toString(C));
 			return A;
 		}
 	}
@@ -132,5 +150,35 @@ public class MergeSort {
 			temp[i] = (int)(Math.random()*1000);
 		}
 		return temp;
+	}
+	
+	public static boolean isValidAgain(int n){
+		if (n < 0 || n > 2){
+			System.out.println("Not a valid entry.  Please re-enter");
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+	public static void again(int[]A, int n){
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Do you want to run again?  0 = No.  1 = Yes with Same array.  2 = Yes with Different array.");
+		int again = input.nextInt();
+		while (!isValidAgain(again)){
+			System.out.println("0 = No.  1 = Yes with Same array.  2 = Yes with Different array.");
+			again = input.nextInt();
+		}
+		switch(again){
+			case 0:
+				break;
+			case 1:
+				body(A, n);
+				break;
+			case 2:
+				body();
+				break;
+		}
 	}
 }
