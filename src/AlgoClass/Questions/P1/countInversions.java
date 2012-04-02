@@ -1,12 +1,11 @@
-package AlgoClass;
+package AlgoClass.Questions.P1;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
-//import java.util.Scanner;
+//import java.util.Arrays;
 
-public class CountInversions {
+import AlgoClass.commonResources;
+
+public class countInversions {
 	
 	static long left = 0;
 	static long right = 0;
@@ -20,9 +19,9 @@ public class CountInversions {
 	}
 	
 	public static void body() throws IOException {
-		int[] A = populateArray();
-		int[] mySort = sortAndCount(A, 100000);
-
+		int[] A = commonResources.populateArray("P1","IntegerArray");
+//		int[] mySort = sortAndCount(A, 100000);
+		sortAndCount(A, 100000);
 //		int[] A = 
 //			{1,3,5,7,2,4,6,8,1};
 //		int[] mySort = sortAndCount(A, A.length);
@@ -84,23 +83,6 @@ public class CountInversions {
 		return D;
 	}
 		
-	public static int[] populateArray() throws IOException
-	{
-	BufferedReader in = new BufferedReader(new FileReader(
-			"C:/Users/qa z600/workspace/Mathish/src//AlgoClass//Questions//IntegerArray.txt"));
-	int[] IntegerArray = new int[100000];
-	int n = 0;
-	while (in.ready() && n < 100000) { 
-		String line = in.readLine();
-		IntegerArray[n] = Integer.parseInt(line);
-		n++;
-		}
-	in.close();
-	System.out.println(Arrays.toString(IntegerArray));
-	return IntegerArray;
-	}
-	
-	
 	//http://www.csc.liv.ac.uk/~martin/teaching/comp202/Java/Inversions-code.html
     public static long countInversions(int nums[])
     /*  This function will count the number of inversions in an

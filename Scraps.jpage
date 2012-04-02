@@ -1,0 +1,18 @@
+Integer[] A = {3,8,2,5,1,4,7,6};
+ArrayList<Integer> l = new ArrayList<Integer>(Arrays.asList(A));
+l.indexOf(3)
+
+Integer[] A = {3,8,2,5,1,4,7,9};
+Arrays.asList(A).indexOf(3)
+
+ArrayList<Integer> list = new ArrayList<Integer>();
+list.add(3);
+list.indexOf(3)
+
+String input = "Chartered Certified<!--lol--> Accountants (ACCA)";
+int e = input.indexOf("-->");
+int s = input.indexOf("<!--");
+input = input.replace(input.substring(s, e + 3), " ");
+input
+
+ArrayList<Integer> list = new ArrayList<Integer>();

@@ -1,4 +1,4 @@
-package AlgoClass;
+package AlgoClass.Questions.P1;
 /*     This is a program to count the number of inversions in a
  *  permutation of integers.  Actually this will process several
  *  arrays.  
@@ -39,7 +39,7 @@ package AlgoClass;
 import java.io.*;
 import java.util.*;
 
-class Inversions
+class inversions
 {
     public static void main (String args[])  // entry point from OS
     {
