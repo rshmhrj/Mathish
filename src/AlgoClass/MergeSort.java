@@ -18,7 +18,7 @@ public class MergeSort {
 		int arrayLength = input.nextInt();
 		
 		int[] A = new int[arrayLength];
-		A = createRandomArray(arrayLength);
+		A = Array.createRandomArray(arrayLength);
 		System.out.println("Original   Array: " + Arrays.toString(A));
 		
 		long myStartTime = System.currentTimeMillis();
@@ -120,14 +120,6 @@ public class MergeSort {
 			}
 		}
 		return D;
-	}
-	
-	public static int[] createRandomArray(int n){
-		int[] temp = new int[n];
-		for (int i = 0; i < n; i++) {
-			temp[i] = (int)(Math.random()*1000);
-		}
-		return temp;
 	}
 	
 	public static boolean isValidAgain(int n){

@@ -131,11 +131,10 @@ public class Problem3 {
 	
 	
 	public static int[] generatePrimeListNEW(int num){
-		int nump = (num + 1);
+//		int nump = (num + 1);
 		int pCount = 0;
 		
-		int[] numbers;
-		numbers = new int[nump];
+//		int[] numbers = new int[nump];
 		
 		ArrayList<Integer> primes = new ArrayList<Integer>();
 		

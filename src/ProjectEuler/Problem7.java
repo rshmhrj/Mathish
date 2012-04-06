@@ -1,5 +1,4 @@
 package ProjectEuler;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Problem7 {

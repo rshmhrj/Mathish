@@ -3,7 +3,7 @@ package AlgoClass.Questions.P1;
 import java.io.IOException;
 //import java.util.Arrays;
 
-import AlgoClass.commonResources;
+import AlgoClass.Array;
 
 public class countInversions {
 	
@@ -19,7 +19,7 @@ public class countInversions {
 	}
 	
 	public static void body() throws IOException {
-		int[] A = commonResources.populateArray("P1","IntegerArray");
+		int[] A = Array.populate("P1","IntegerArray");
 //		int[] mySort = sortAndCount(A, 100000);
 		sortAndCount(A, 100000);
 //		int[] A = 
@@ -27,8 +27,8 @@ public class countInversions {
 //		int[] mySort = sortAndCount(A, A.length);
 //		System.out.println("Original Array: " + Arrays.toString(A));
 //		System.out.println("Sorted   Array: " + Arrays.toString(mySort));
-		System.out.println("Number of Inversions (my code) = " + invCount);
-		long count = countInversions(A);
+		System.out.println("Number of Inversions (my code)    = " + invCount);
+		long count = countInversionsMethod(A);
 		System.out.println("Number of Inversions (other code) = " + count);
 	}
 	
@@ -84,7 +84,7 @@ public class countInversions {
 	}
 		
 	//http://www.csc.liv.ac.uk/~martin/teaching/comp202/Java/Inversions-code.html
-    public static long countInversions(int nums[])
+    public static long countInversionsMethod(int nums[])
     /*  This function will count the number of inversions in an
         array of numbers.  (Recall that an inversion is a pair
         of numbers that appear out of numerical order in the list.
@@ -125,8 +125,8 @@ public class countInversions {
 
       /*  Recursively count the inversions in each part. 
       */
-        countLeft = countInversions (left);
-        countRight = countInversions (right);
+        countLeft = countInversionsMethod (left);
+        countRight = countInversionsMethod (right);
 
       /*  Now merge the two sublists together, and count the
           inversions caused by pairs of elements, one from

@@ -1,5 +1,5 @@
 package ProjectEuler;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class Problem10 {
 	
@@ -12,11 +12,11 @@ public class Problem10 {
 	 */
 	
 	public static void main(String[] args){
-		Scanner input = new Scanner(System.in);
+//		Scanner input = new Scanner(System.in);
 		
 		System.out.println("This program will find the sum of all the primes below x.");
 		System.out.print("Please enter a value for x:");
-		int num = input.nextInt();
+//		int num = input.nextInt();
 		long start = System.currentTimeMillis();
 		
 		

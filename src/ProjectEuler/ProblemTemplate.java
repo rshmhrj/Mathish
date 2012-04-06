@@ -16,7 +16,7 @@ public class ProblemTemplate {
 		int num = input.nextInt();
 		long start = System.currentTimeMillis();
 		
-		
+		System.out.println(num);
 		
 		
 		

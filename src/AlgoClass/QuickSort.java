@@ -1,106 +1,108 @@
 package AlgoClass;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class QuickSort {
 
-	public static int[] checkedPivots;
 	public static void main(String[] args) throws IOException {
 		System.out.println("This program will sort an array using the Quicksort Algo.");
 		body();
 		System.out.println("End of Program.");
 	}
 	public static void body() throws IOException {
-		int n = 8;
-		int[] A = Array.populate("P2", "simpleArray", n);
-		populateCheckedPivots(n);
-		System.out.println("Original Array: "+Arrays.toString(A));
-		int[] myQuickSort = sort(A, 0, n);
-		System.out.println("Sorted Array:"+Arrays.toString(myQuickSort));
+		int[] A = Array.populate("P2", "array3");
+		int n = A.length;
+		
+		System.out.println("Number of elements in input array = " + n);
+		if (n < 1000) System.out.println("Original Array: "+Arrays.toString(A));
+
+			long myStartTime = System.currentTimeMillis();
+				// 0 = first, 1 = middle, 2 = random, 3 = median of three, 9 = last
+				int[] myQuickSort = sort(A, n, 0, n-1, 1);
+			long myEndTime = System.currentTimeMillis();
+			
+			long myTime = myEndTime-myStartTime;
+		
+		if (n < 1000) System.out.println("Sorted Array:"+Arrays.toString(myQuickSort));
+		System.out.println("My  time: " + myTime);
 	}
-	private static int[] sort(int[] A, int start, int len) {
-		if (len > 1){
-			int pivot = choosePivot(A, start, len, 0);
-			int pivotValue = A[pivot];
-			
-			Partition(A,start,len,pivotValue);
-			int pivotIndex = Arrays.binarySearch(A, 0, len, pivotValue);
-			checkedPivots[nextCheckedPivot()] = pivotIndex;
-			
-			sort(A, start, pivotIndex);
-			sort(A, pivotIndex+1, len);
+	private static int[] sort(int[] A, int len, int left, int right, int type) {
+		if (len <= 1){
+			return A;
 		}
-		return A;
+		else{
+			int pivot = choosePivot(A, len, left, right, type);
+			if (A[pivot] != A[left]) Array.swap(A, pivot, left);
+			
+			int newPivot = partition(A, left, right);
+			
+			int leftLen = newPivot - left;
+			int rightLen = right - newPivot;
+			
+			sort(A, leftLen, left, newPivot-1, type);
+			sort(A, rightLen, newPivot+1, right, type);
+		
+			return A;
+		}
 	}
 
-	private static void Partition(int[] A, int l, int r, int pivotValue) {
+	private static int partition(int[] A, int l, int r) {
+		int p = A[l];
 		int i = l + 1;
-		for (int j = l + 1; j < r; j++){
-			if (A[j] < pivotValue){
+		for (int j = l + 1; j < r+1; j++){
+			if (A[j] < p){
 				Array.swap(A, i, j);
 				i++;
 			}
 		}
 		Array.swap(A, l, i - 1);
+		return i;
 	}
-	private static void populateCheckedPivots(int n) {
-		int[] temp = new int[n];
-		for (int i = 0; i < n; i++){
-			temp[i] = -1;
+	
+	private static int choosePivot(int[] A, int n, int l, int r, int type) {
+		int mid = (int)((l+r)/2);
+		// 0 = first, 1 = middle, 2 = random, 3 = median of three, 9 = last
+		if (type == 0){
+			return l;
 		}
-		checkedPivots = temp;
-	}
-	private static int nextCheckedPivot() {
-		int x = 0;
-		for (int i = 0; i < checkedPivots.length; i++) {
-			if (checkedPivots[i] == -1){
-				x = i;
-				break;
-			}
-			else{
-				x = -1;
-			}
+		else if(type == 1){
+			return mid;
 		}
-		return x;
-	}
-	private static int choosePivot(int[] A, int start, int len, int type) {
-		int pivot;
-		switch (type){
-		case 0: // bad/naive method
-			String possible = "";
-			for (int i = 0; i < A.length; i++) {
-				for (int j = 0; j < checkedPivots.length; j++) {
-					if (A[i] == checkedPivots[j]){
-						break;
-					}
-				}
-				if (i != A.length-1){
-					possible += i+" ";
-				}
-				else{
-					possible += i;
-				}
-			}
-			if (possible != ""){
-				pivot = Integer.parseInt(possible.substring(0, possible.indexOf(" ")));
-			}
-			else{
-				pivot = 0;
-			}
-			break;
-		case 1: // good
-			pivot = 3;
-			break;
-		case 2: // random
-			pivot = (int)Math.random()*len;
-			break;
-		default: // good
-			pivot = 3;
-			break;
+		else if (type == 3){
+			return meidanOfThree(A,l,mid,r);
 		}
-		return pivot;
+		else if (type == 9){
+			return r;
+		}
+		else{
+			return ((int)Math.random()*n) + l;
+		}
 	}
+	
+	private static int meidanOfThree(int[]A, int l, int mid, int r) {
+		int a = A[l];
+		int b = A[mid];
+		int c = A[r];
+		int large, small, median = 0;
+		
+		if (a > b){
+			large = a;
+			small = b;
+		}
+		else{
+			large = b;
+			small = a;
+		}
+		
+		if (c > large) median = large;
+		else if (c < small) median = small;
+		else median = c;
+		
+		if (median == A[l]) return l;
+		else if (median == A[mid]) return mid;
+		else return r;
+	}
+	
 	
 }

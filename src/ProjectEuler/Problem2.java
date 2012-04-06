@@ -12,8 +12,8 @@ public class Problem2 {
 	 */
 	public static void main(String[] args) {
 		int total = 0;
-		int sum = 1;
-		int max = 4000000;
+//		int sum = 1;
+//		int max = 4000000;
 		// For each number check to see whether it is the sum of the previous two numbers.
 		// If yes, then add it to an array named fibSeq
 		int [] fibSeq;
