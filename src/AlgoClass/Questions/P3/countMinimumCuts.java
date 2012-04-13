@@ -1,8 +1,10 @@
 package AlgoClass.Questions.P3;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import AlgoClass.AdjacencyList;
+import AlgoClass.Array;
 
 public class countMinimumCuts {
 
@@ -13,7 +15,7 @@ public class countMinimumCuts {
 	}
 	
 	public static void body() throws IOException {
-		int[] test = AdjacencyList.generateArrayFromAdjacencyList("P3", "kargerAdj", 40);
-		System.out.println(test);
+		int[][] test = AdjacencyList.generateArrayFromAdjacencyList("P3", "kargerAdj", 40);
+		Array.printAdjacencyListArray(test);
 	}
 }
