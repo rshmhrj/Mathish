@@ -2,7 +2,7 @@ package CryptoClass;
 
 public class Convert {
 	
-	public String StringToHex(String str){
+	public static String StringToHex(String str){
 		char[] chars = str.toCharArray();
 		
 		StringBuffer hex = new StringBuffer();
@@ -12,7 +12,7 @@ public class Convert {
 		return hex.toString();
 	}
 	
-	public String HexToString(String hex){
+	public static String HexToString(String hex){
 		  StringBuilder sb = new StringBuilder();
 		  StringBuilder temp = new StringBuilder();
 	 
@@ -33,7 +33,7 @@ public class Convert {
 		  return sb.toString();
 	  }
 	
-	public String DecimalToHex(int dec){
+	public static String DecimalToHex(int dec){
 		String hex = "";
 		
 		  StringBuilder sb = new StringBuilder();
@@ -56,7 +56,7 @@ public class Convert {
 		  return sb.toString();
 	  }
 	
-	public String HexToDecimal(String hex){
+	public static String HexToDecimal(String hex){
 		  StringBuilder sb = new StringBuilder();
 		  StringBuilder temp = new StringBuilder();
 	 
