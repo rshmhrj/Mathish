@@ -48,4 +48,49 @@ public class AdjacencyList {
 		else count = 8;
 		return count;
 	}
+	
+	public static int countEdgesUndirected(int[][] graph){
+		int vertices = graph.length;
+		int totalEdges = 0;
+		for (int[] vertex : graph){
+			totalEdges += vertex.length;
+		}
+		return (totalEdges - vertices)/2;
+	}
+	
+	public static int countVerticesUndirected(int[][] graph){
+		return graph.length;
+	}
+	
+	public static boolean checkIfEdgeExists(int[][] graph, int[] edge){
+		boolean foundFlag = false;
+		for (int[] vertex : graph){
+			if (vertex[0] == edge[0]){
+				for (int i = 1; i < vertex.length; i++){
+					if (vertex[i] == edge[1]){
+//						System.out.println("Found edge: " + Integer.toString(edge[0])+ Integer.toString(vertex[i]));
+						foundFlag = true;
+						break;
+					}
+				}
+			}
+			if (vertex[0] == edge[1]){
+				for (int j = 1; j < vertex.length; j++){
+					if(vertex[j] == edge[0]){
+//						System.out.println("Found edge: " + Integer.toString(edge[1])+ Integer.toString(vertex[j]));
+						foundFlag = true;
+						break;
+					}
+				}
+			}
+			
+		}
+//		if (foundFlag){
+//		System.out.println("Edge found.");
+//		}
+//		else{
+//		System.out.println("Edge not found.");
+//		}
+		return foundFlag;
+	}
 }

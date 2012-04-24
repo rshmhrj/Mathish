@@ -16,3 +16,8 @@ input = input.replace(input.substring(s, e + 3), " ");
 input
 
 ArrayList<Integer> list = new ArrayList<Integer>();
+
+int x = 0;
+int y = 100;
+int diff = y - x;
+Math.random() * diff;
