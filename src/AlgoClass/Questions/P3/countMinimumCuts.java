@@ -1,7 +1,7 @@
 package AlgoClass.Questions.P3;
 
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.Scanner;
 
 import AlgoClass.AdjacencyList;
 import AlgoClass.Array;
@@ -9,7 +9,7 @@ import AlgoClass.MinimumCuts;
 
 public class countMinimumCuts {
 
-	private static int minimumCuts = 0;
+	private static int minimumCuts;
 	
 	public static void main(String[] args) throws IOException {
 		System.out.println("This program will count the minimum number of cuts in a given Adjacency List.");
@@ -18,23 +18,35 @@ public class countMinimumCuts {
 	}
 	
 	public static void body() throws IOException {
-//		int[][] test = AdjacencyList.generateArrayFromAdjacencyList("P3", "kargerAdj (1)", 40);
-		int[][] test = AdjacencyList.generateArrayFromAdjacencyList("P3", "box1", 4);
-		Array.printAdjacencyListArray(test);
-		int vertexCount = AdjacencyList.countVerticesUndirected(test);
-		int edgeCount = AdjacencyList.countEdgesUndirected(test);
-		System.out.println("Number of Vertices = " + vertexCount);
-		System.out.println("Number of Edges = " + edgeCount);
-		MinimumCuts.cut(test);
+		Scanner input = new Scanner(System.in);
+		System.out.print("Please enter the number of iterations:");
+		int iterations = input.nextInt();
+//		long[][] test = AdjacencyList.generateArrayFromAdjacencyListLong("P3", "kargerAdj (1)", 40);
+//		int[][] test = AdjacencyList.generateArrayFromAdjacencyList("P3", "box2", 4);
+//		Array.printAdjacencyListArray(test);
+//		long vertexCount = AdjacencyList.countVerticesUndirected(test);
+//		long edgeCount = AdjacencyList.countEdgesUndirected(test);
+//		System.out.println("Number of Vertices = " + vertexCount);
+//		System.out.println("Number of Edges = " + edgeCount);
+//
+//		System.out.println();
+
+		countMinCuts(iterations);
 	}
 	
-	public static void countMinCuts(int[][] graph, int numberOfExecutions){
-		int iterationCounter = 0;
-		while (iterationCounter < numberOfExecutions){
-			MinimumCuts.cut(graph);
-			
+	public static void countMinCuts(int numberOfExecutions) throws IOException{
+		int iterationCounter = 1;
+		minimumCuts = MinimumCuts.cut(AdjacencyList.generateArrayFromAdjacencyListInt("P3", "kargerAdj (1)", 40));
+		while (iterationCounter <= numberOfExecutions){
+			int newMinCut = MinimumCuts.cut(AdjacencyList.generateArrayFromAdjacencyListInt("P3", "kargerAdj (1)", 40));
+			if (newMinCut < minimumCuts){
+				minimumCuts = newMinCut;
+			}
+			System.out.println("Iteration "+iterationCounter+" Cut = "+newMinCut);
 			iterationCounter++;
 		}
+		System.out.println("After " + numberOfExecutions + " iterations, ");
+		System.out.println("the minimum # of cuts = " + minimumCuts);
 	}
 	
 }

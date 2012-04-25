@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import math.Maths;
+
 public class Array {
 	
 	public static int[] populate(String problem, String filename) throws IOException{
@@ -60,6 +62,62 @@ public class Array {
 	}
 	
 	public static void printAdjacencyListArray(int[][] array){
+		for (int i = 0; i < array.length; i++){
+			System.out.print("[ ");
+			for (int j = 0; j < array[i].length; j++){
+				System.out.print(array[i][j]+" ");
+			}
+			System.out.println("]");
+		}
+	}
+
+	public static int[] remove(int value, int[] array) {
+		int[] temp = new int[array.length -1];
+		int counter = 0;
+		for (int item : array){
+			if (array[counter] != value){
+				temp[counter] = array[counter];
+			}
+			counter++;
+		}
+		return temp;
+	}
+
+	public static boolean alreadyExists(int value, int[] array, int currentPosition) {
+		boolean foundFlag = false;
+		for (int i = 0; i < array.length; i++){
+			if (array[i] == value && i < currentPosition){
+				foundFlag = true;
+			}
+		}
+		return foundFlag;
+	}
+	
+	public static int[] chooseTwoRandomElements(int[] array){
+		int[] result = new int[2];
+		int[] randoms = Maths.twoRandoms(0, array.length-1);
+		result[0] = array[randoms[0]];
+		result[1] = array[randoms[1]];
+		return result;
+	}
+	
+	public static int[] extractLeadingValues(int[][] array){
+		int[] result = new int[array.length];
+		for (int i = 0; i < array.length; i++){
+			result[i] = array[i][0];
+		}
+		return result;
+	}
+	
+	public static int[] extractLeadingValues(long[][] array){
+		int[] result = new int[array.length];
+		for (int i = 0; i < array.length; i++){
+			result[i] = (int) array[i][0];
+		}
+		return result;
+	}
+
+	public static void printAdjacencyListArray(long[][] array) {
 		for (int i = 0; i < array.length; i++){
 			System.out.print("[ ");
 			for (int j = 0; j < array[i].length; j++){

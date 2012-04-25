@@ -3,11 +3,12 @@ package math;
 public class Maths {
 
 	public static int randomBetween(int x, int y){
-		int diff = y - x + 1;
+		int diff = y - x;
 		if (diff < 0){
 			diff *= -1;
 		}
-		int z = (int)Math.ceil((Math.random()*diff));
+		double random = Math.random();
+		int z = (int)Math.round(random*diff);
 		return z;
 	}
 	
@@ -20,4 +21,5 @@ public class Maths {
 		int[] result = {a,b};
 		return result;
 	}
+	
 }
