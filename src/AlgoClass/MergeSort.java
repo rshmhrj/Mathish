@@ -12,13 +12,15 @@ public class MergeSort {
 	}
 	
 	public static void body(){
-		Scanner input = new Scanner(System.in);
-		
-		System.out.println("Please enter the size of the array to create.");
-		int arrayLength = input.nextInt();
-		
-		int[] A = new int[arrayLength];
-		A = Array.createRandomArray(arrayLength);
+//		Scanner input = new Scanner(System.in);
+//		
+//		System.out.println("Please enter the size of the array to create.");
+//		int arrayLength = input.nextInt();
+//		
+//		int[] A = new int[arrayLength];
+//		A = Array.createRandomArray(arrayLength);
+		int[] A = { 5, 3, 8, 9, 1, 7, 0, 2, 6, 4 };
+		int arrayLength = A.length;
 		System.out.println("Original   Array: " + Arrays.toString(A));
 		
 		long myStartTime = System.currentTimeMillis();
