@@ -22,4 +22,39 @@ public class Maths {
 		return result;
 	}
 	
+	public static int gcd (int x, int y){
+		if (x == y) return x;
+		
+		int max = Math.max(x, y);
+		int min = Math.min(x, y);
+		int z = max - min;
+		return gcd(min,z);
+	}
+	
+	public static int[] extendedGCD(int a, int b){
+		int[] result = {0,1};
+		if ( b == 0 ) return result;
+		else{
+			int q = a/b;
+			int r = a%b;
+			
+			int[] st = new int[2];
+			st = extendedGCD(b,r);
+			
+			int s = st[0];
+			int t = st[1];
+			
+			result[0] = t;
+			result[1] = s - q * t;
+			return result;
+		}
+	}
+//	function extended_gcd(a, b)
+//    if b = 0
+//        return (1, 0)
+//    else
+//        (q, r) := divide (a, b)
+//        (s, t) := extended_gcd(b, r)
+//        return (t, s - q * t)
+	
 }

@@ -126,4 +126,12 @@ public class Array {
 			System.out.println("]");
 		}
 	}
+	public static void toString(int[] A){
+		System.out.print("[ ");
+		for (int i = 0; i < A.length-1; i++){
+			System.out.print(A[i]+ ", ");
+		}
+		System.out.print(A[A.length-1]);
+		System.out.print(" ]");
+	}
 }

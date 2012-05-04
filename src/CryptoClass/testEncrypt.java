@@ -1,5 +1,7 @@
 package CryptoClass;
 
+import math.Maths;
+import AlgoClass.Array;
 import CryptoClass.Convert;
 import CryptoClass.BitwiseXOR;
 
@@ -17,9 +19,13 @@ public class testEncrypt {
 		System.out.println("ac1e37bfb15599e5f40eef805488281d");
 		
 		System.out.println();
-		String bxor = BitwiseXOR.XOR("9b5f44f293cd85080d90e8c43318f939854cfb8ea2dd87bbf48b94ea7eadaaa3c596a1087a481e","a86564abfcb8f7286bf99ab747389a51ea3f9ee082beeecb9ceee69e1bd5de83a4e2d569192330");
-		System.out.println(bxor);
-		System.out.println(Convert.HexToString(bxor));
+//		String bxor = BitwiseXOR.XOR("9b5f44f293cd85080d90e8c43318f939854cfb8ea2dd87bbf48b94ea7eadaaa3c596a1087a481e","a86564abfcb8f7286bf99ab747389a51ea3f9ee082beeecb9ceee69e1bd5de83a4e2d569192330");
+//		System.out.println(bxor);
+//		System.out.println(Convert.HexToString(bxor));
+		
+		
+		System.out.println(Maths.gcd(1989, 867));
+		Array.toString(Maths.extendedGCD(120, 23));
 	}
 
 }

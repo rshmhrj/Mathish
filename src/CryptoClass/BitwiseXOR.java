@@ -2,7 +2,7 @@ package CryptoClass;
 
 public class BitwiseXOR {
 
-	public static String XOR(String s1, String s2){
+	public static String XOR(String s1, String s2, boolean pad){
 		//System.out.println("XORing started");
 		
 		//calculate lengths of strings
@@ -10,18 +10,31 @@ public class BitwiseXOR {
 		int s1Len = s1.length();
 		int s2Len = s2.length();
 		int lengthDifference = s1Len - s2Len;
-		
+
 		//set length and pad shorter string
 		if (lengthDifference == 0){
 			length = s1Len;
 		}
 		else if (lengthDifference > 0){
-			length = s1Len;
-			s2 = pad(s2, lengthDifference/2);
+			if (pad)
+			{
+				length = s1Len;
+				s2 = pad(s2, lengthDifference/2);	
+			}
+			else
+			{
+				length = s2Len;
+			}
+
 		}
 		else{
-			length = s2Len;
-			s1 = pad(s1, (-lengthDifference)/2);
+			if (pad){
+				length = s2Len;
+				s1 = pad(s1, (-lengthDifference)/2);
+			}
+			else{
+				length = s1Len;
+			}
 		}
 		
 		//System.out.println(s1);
