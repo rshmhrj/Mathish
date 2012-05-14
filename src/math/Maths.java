@@ -1,5 +1,7 @@
 package math;
 
+import java.util.ArrayList;
+
 public class Maths {
 
 	public static int randomBetween(int x, int y){
@@ -57,4 +59,15 @@ public class Maths {
 //        (s, t) := extended_gcd(b, r)
 //        return (t, s - q * t)
 	
+	public static ArrayList<Integer> findInvertibleElements(int[] Z){
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		
+		for (int i = 1; i < Z.length-1; i++){
+			if (gcd(Z[i],Z.length-1) == 1){
+				result.add(Z[i]);
+			}
+		}
+		
+		return result;
+	}
 }

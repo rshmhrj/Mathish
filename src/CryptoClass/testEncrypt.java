@@ -1,5 +1,7 @@
 package CryptoClass;
 
+import java.util.ArrayList;
+
 import math.Maths;
 import AlgoClass.Array;
 import CryptoClass.Convert;
@@ -26,6 +28,11 @@ public class testEncrypt {
 		
 		System.out.println(Maths.gcd(1989, 867));
 		Array.toString(Maths.extendedGCD(120, 23));
+		System.out.println("");
+		System.out.println("-----------------");
+		int[] Z = {0,1,2,3,4,5,6,7,8,9,10,11,12};
+		ArrayList<Integer> array = Maths.findInvertibleElements(Z);
+		System.out.println(array);
 	}
 
 }
