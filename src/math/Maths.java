@@ -70,4 +70,44 @@ public class Maths {
 		
 		return result;
 	}
+	
+	public static boolean isPalindrome(String str){
+		boolean palindrome = new StringBuilder(str).reverse().toString().equals(str);
+		return palindrome;
+	}
+	
+	public static boolean isPalindrome(int x){
+		StringBuffer temp = new StringBuffer();
+		temp.append(x);
+		String forward = temp.toString();
+		temp = temp.reverse();
+		String backward = temp.toString();
+		if (forward.equals(backward)) return true;
+		else return false;
+	}
+	
+	public static boolean isPrime(int val){
+		double sqrt = Math.sqrt(val);
+
+		for(int div=2; div<= sqrt+1; div++){
+			if(val%div == 0){
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public static ArrayList<Integer> generatePrimeFactors(long num){		
+		ArrayList<Integer> primeFactors = new ArrayList<Integer>();
+		double root = Math.sqrt(num)+1;
+		
+		// initialize all prime factors in the list to false
+		for(int i=2; i <= root+1; i++){
+			if(num%i == 0 && isPrime(i)){
+				primeFactors.add(i);
+			}
+		}
+
+		return primeFactors;
+	}
 }

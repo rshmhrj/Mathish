@@ -1,5 +1,6 @@
 package ProjectEuler;
 import java.util.Scanner;
+import math.Maths;
 
 public class ProblemTemplate {
 	
