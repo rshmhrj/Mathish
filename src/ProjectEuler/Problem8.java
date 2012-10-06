@@ -1,8 +1,8 @@
 package ProjectEuler;
 import java.util.Scanner;
 
-public class Problem8 {
-	
+public class Problem8
+{
 	/**
 	 * Find the greatest product of five consecutive digits in the 1000-digit number.
 
@@ -28,7 +28,8 @@ public class Problem8 {
 			71636269561882670428252483600823257530420752963450
 	 */
 	
-	public static void main(String[] args){
+	public static void main(String[] args)
+	{
 		Scanner input = new Scanner(System.in);
 		
 		System.out.println("This program will find the greatest product of 5 consecutive integers.");
@@ -49,32 +50,36 @@ public class Problem8 {
 		int time = (int)(end - start);
 		System.out.println("****The Program took "+time+"ms to execute.****");
 		System.out.println("End of Program.");
-	} // end method main
+	}
 	
-	public static int body(String X){
+	public static int body(String X)
+	{
 		int ans = 0;
-		for (int i = 0; i < X.length()-1; i++) {
-			if (i+4 <= X.length()-1){
+		int len = X.length()-1;
+		for (int i = 0; i < len; i++)
+		{
+			if (i+4 <= len)
+			{
 				int one = toInt(X,i);
 				int two = toInt(X,i+1);
 				int three = toInt(X,i+2);
 				int four = toInt(X,i+3);
 				int five = toInt(X,i+4);
-				if(one == 0 || two == 0 || three == 0 || four == 0 || five == 0){
+				
+				if(one == 0 || two == 0 || three == 0 || four == 0 || five == 0)
+					{
 					continue;
-				}	
+					}	
 				int current = one*two*three*four*five;
 				if (current > ans) ans = current;
-				}
-			
-			
+			}
 		}
-		
 		return ans;
 	}
 	
-	public static int toInt(String X, int i){
+	public static int toInt(String X, int i)
+	{
 		return Integer.parseInt(String.valueOf(X.charAt(i)));
 	}
 
-} // end class Problem8
+}
