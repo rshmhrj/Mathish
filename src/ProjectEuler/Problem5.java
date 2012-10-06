@@ -16,6 +16,7 @@ public class Problem5 {
 		
 		System.out.println("Please enter the value for x:");
 		int num = input.nextInt();
+		input.close();
 		
 		long start = System.currentTimeMillis();
 		

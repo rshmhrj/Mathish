@@ -14,7 +14,7 @@ public class MainCalc {
 		int num1 = 0;
 		int num2 = 0;
 		String op = "";		
-		Scanner in = new Scanner(System.in);		
+		Scanner in = new Scanner(System.in);	
 		
 		do{
 			System.out.println("Welcome to the Great Calculator!\n");

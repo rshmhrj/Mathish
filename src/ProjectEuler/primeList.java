@@ -10,6 +10,7 @@ public class primeList {
 		System.out.println("This program is to test the time to generate primes using both nested 'fors' and separate methods.");
 		System.out.println("Please enter the number of primes to find:");
 		int num = input.nextInt();
+		input.close();
 		long startMethod = System.currentTimeMillis();
 		System.out.println("****Begin Methods.****");
 		

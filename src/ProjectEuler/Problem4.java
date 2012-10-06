@@ -23,6 +23,7 @@ public class Problem4 {
 		Scanner input = new Scanner(System.in);
 		System.out.print("Enter the number of digits (1,2,3):");
 		int digits = input.nextInt();
+		input.close();
 		
 		if (digits == 1){
 			System.out.println("\n99");

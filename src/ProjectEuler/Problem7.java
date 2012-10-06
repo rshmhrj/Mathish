@@ -19,6 +19,7 @@ public class Problem7 {
 		System.out.println("Please enter a value for x:");
 		int num = input.nextInt();
 		long start = System.currentTimeMillis();
+		input.close();
 		
 		int[] primeList = generatePrimeList(num);
 		

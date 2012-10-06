@@ -13,7 +13,7 @@ public class Encryption {
 	public static void Encrypt() throws IOException{
 		
 		System.out.println("Encryption started.");
-		System.out.println("Please enter the name of the file (in C:\\Test) that you want to read.  Do not include the '.txt'");
+		System.out.println("Please enter the name of the file (in D:\\Test) that you want to read.  Do not include the '.txt'");
 		enterName();
 		setFile(fileName);
 		getFile();
@@ -47,12 +47,12 @@ public static void getFile()
 	System.out.println(file);
 	}
 	public static void isValidFileName(String name) {
-		if (name.indexOf("C:") != -1 || name.indexOf(".txt") != -1){
-			System.out.println("Invalid Name.  Please enter the name of the file (without C:\\Test and without the .txt).");
+		if (name.indexOf("D:") != -1 || name.indexOf(".txt") != -1){
+			System.out.println("Invalid Name.  Please enter the name of the file (without D:\\Test and without the .txt).");
 			enterName();
 		}
 		else{
-			setFileName("C:\\Test\\" + name + ".txt");
+			setFileName("D:\\Test\\" + name + ".txt");
 		}
 	}
 }

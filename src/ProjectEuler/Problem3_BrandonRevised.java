@@ -16,6 +16,7 @@ public class Problem3_BrandonRevised {
 	public static void main(String[] args) {
 		
 		Scanner input = new Scanner(System.in);
+		input.close();
 
 		long num = 0; // initialize composite number
 		

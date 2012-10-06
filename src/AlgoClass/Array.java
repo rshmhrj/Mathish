@@ -10,7 +10,7 @@ public class Array {
 	
 	public static int[] populate(String problem, String filename) throws IOException{
 			BufferedReader in = new BufferedReader(new FileReader(
-					"C://EclipseWorkspaces//public//Mathish//src//AlgoClass//Questions//"+problem+"//"+filename+".txt"));
+					"D://EclipseWorkspaces//public//Mathish//src//AlgoClass//Questions//"+problem+"//"+filename+".txt"));
 			int[] temp = new int[100000];
 			int n = 0;
 			while (in.ready()) { 
@@ -28,7 +28,7 @@ public class Array {
 	
 	public static int[] populate(String problem, String filename, int arraySize) throws IOException{
 		BufferedReader in = new BufferedReader(new FileReader(
-				"C://EclipseWorkspaces//public//Mathish//src//AlgoClass//Questions//"+problem+"//"+filename+".txt"));
+				"D://EclipseWorkspaces//public//Mathish//src//AlgoClass//Questions//"+problem+"//"+filename+".txt"));
 		int[] IntegerArray = new int[arraySize];
 		int n = 0;
 		while (in.ready() && n < arraySize) { 

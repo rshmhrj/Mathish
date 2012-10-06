@@ -9,7 +9,7 @@ public class DirectedGraph {
 	
 	public static int[][][] generateArrays(String problem, String filename, int length) throws IOException{
 		BufferedReader in = new BufferedReader(new FileReader(
-				"C://EclipseWorkspaces//public//Mathish//src//AlgoClass//Questions//"+problem+"//"+filename+".txt"));
+				"D://EclipseWorkspaces//public//Mathish//src//AlgoClass//Questions//"+problem+"//"+filename+".txt"));
 		int[][][] BigList = new int[2][length][2];
 //		int[][] forward = new int[length][2];
 //		int[][] reverse = new int[length][2];

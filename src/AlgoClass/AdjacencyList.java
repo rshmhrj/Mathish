@@ -11,7 +11,7 @@ public class AdjacencyList {
 
 	public static int[][] generateArrayFromAdjacencyListInt(String problem, String filename, int length) throws IOException{
 		BufferedReader in = new BufferedReader(new FileReader(
-				"C://EclipseWorkspaces//public//Mathish//src//AlgoClass//Questions//"+problem+"//"+filename+".txt"));
+				"D://EclipseWorkspaces//public//Mathish//src//AlgoClass//Questions//"+problem+"//"+filename+".txt"));
 		int[][] AdjList = new int[length][];
 		int n = 0;
 		while (in.ready()) { 
@@ -41,7 +41,7 @@ public class AdjacencyList {
 	
 	public static long[][] generateArrayFromAdjacencyListLong(String problem, String filename, int length) throws IOException{
 		BufferedReader in = new BufferedReader(new FileReader(
-				"C://EclipseWorkspaces//public//Mathish//src//AlgoClass//Questions//"+problem+"//"+filename+".txt"));
+				"D://EclipseWorkspaces//public//Mathish//src//AlgoClass//Questions//"+problem+"//"+filename+".txt"));
 		long[][] AdjList = new long[length][];
 		int n = 0;
 		while (in.ready()) { 

@@ -63,8 +63,8 @@ public class CaesarCipherFromFile
 			System.out.print("For encryption enter 1; For decryption enter 2:");
 			int type = input.nextInt();
 			
-			System.out.println("Please enter the name of the file (in C:\\Test) that you want to read.  Do not include the '.txt'.");
-			String fileName = "C:\\Test\\" + input.next() + ".txt";
+			System.out.println("Please enter the name of the file (in D:\\Test) that you want to read.  Do not include the '.txt'.");
+			String fileName = "D:\\Test\\" + input.next() + ".txt";
 			setFile(fileName);
 			
 			System.out.print("Choose the amount of the shift (0 - 26):");

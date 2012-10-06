@@ -22,6 +22,7 @@ public class Problem6 {
 		System.out.println("This program will find the difference between the 'sum of the squares' and the 'square of the sum' of the first x numbers.");
 		System.out.println("Please enter a value for x:");
 		int num = input.nextInt();
+		input.close();
 		long start = System.currentTimeMillis();
 		
 		int sum = 0;

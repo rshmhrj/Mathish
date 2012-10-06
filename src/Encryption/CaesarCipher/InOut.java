@@ -14,7 +14,7 @@ public class InOut
 	public static void OutTest() throws IOException
 		{
 		PrintWriter out = new PrintWriter(new FileWriter(
-				"C:\\Test\\outputfile.txt"));
+				"D:\\Test\\outputfile.txt"));
 		
 		out.print("Hello ");
 		out.println("world");
@@ -24,7 +24,7 @@ public class InOut
 	public static void InTest() throws IOException
 		{
 		BufferedReader in = new BufferedReader(new FileReader(
-				"C:\\Test\\inputfile.txt"));
+				"D:\\Test\\inputfile.txt"));
 		String line;
 		while (in.ready()) { 
 			  line = in.readLine(); 

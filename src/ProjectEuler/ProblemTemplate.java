@@ -2,6 +2,7 @@ package ProjectEuler;
 import java.util.Scanner;
 import math.Maths;
 
+@SuppressWarnings("unused")
 public class ProblemTemplate {
 	
 	/**
@@ -15,6 +16,8 @@ public class ProblemTemplate {
 		System.out.println("Place descriptive text here.");
 		System.out.print("Please enter a value for x:");
 		int num = input.nextInt();
+		input.close();
+		
 		long start = System.currentTimeMillis();
 		
 		System.out.println(num);

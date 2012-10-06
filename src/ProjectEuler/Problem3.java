@@ -21,6 +21,7 @@ public class Problem3 {
 		
 		System.out.println("What is your composite number?"); // prompt
 		num = input.nextLong(); // number entered will be stored as num
+		input.close();
 		
 		System.out.println("Would you like to use the OLD(0) or NEW(1) algorithm?"); // prompt
 		int algo = input.nextInt(); // algo to be used
