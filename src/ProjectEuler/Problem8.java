@@ -34,7 +34,7 @@ public class Problem8
 		
 		System.out.println("This program will find the greatest product of 5 consecutive integers.");
 		System.out.println("Please enter a value for x.");
-		System.out.print("For the default number, leave blank and press enter:");
+		System.out.print("For the default 1000-digit number, leave blank and press enter:");
 		String num = input.nextLine();
 		input.close();
 		
@@ -56,10 +56,8 @@ public class Problem8
 	{
 		int ans = 0;
 		int len = X.length()-1;
-		for (int i = 0; i < len; i++)
+		for (int i = 0; i < (len-4); i++)
 		{
-			if (i+4 <= len)
-			{
 				int one = toInt(X,i);
 				int two = toInt(X,i+1);
 				int three = toInt(X,i+2);
@@ -72,7 +70,6 @@ public class Problem8
 					}	
 				int current = one*two*three*four*five;
 				if (current > ans) ans = current;
-			}
 		}
 		return ans;
 	}

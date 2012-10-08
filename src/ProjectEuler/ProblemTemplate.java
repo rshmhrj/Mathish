@@ -3,14 +3,16 @@ import java.util.Scanner;
 import math.Maths;
 
 @SuppressWarnings("unused")
-public class ProblemTemplate {
+public class ProblemTemplate
+{
 	
 	/**
 	 * @param args
 	 * Paste problem text here and format.
 	 */
 	
-	public static void main(String[] args){
+	public static void main(String[] args)
+	{
 		Scanner input = new Scanner(System.in);
 		
 		System.out.println("Place descriptive text here.");
@@ -31,6 +33,6 @@ public class ProblemTemplate {
 		int time = (int)(end - start);
 		System.out.println("****The Program took "+time+"ms to execute.****");
 		System.out.println("End of Program.");
-	} // end method main
+	}
 
-} // end class ProblemTemplate
+}
