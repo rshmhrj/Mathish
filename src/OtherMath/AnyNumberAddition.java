@@ -3,34 +3,35 @@ package OtherMath;
 import java.util.Scanner;
 
 public class AnyNumberAddition
-{
-
-	public static void main( String[] args )
 	{
-		Scanner input = new Scanner( System.in );
 
-		System.out.println( "This program will add the digits of any positive number." );
-		System.out.print( "Please enter a number:" );
-		String num = input.next();
-		long start = System.currentTimeMillis();
+		public static void main( String[] args )
+			{
+			Scanner input = new Scanner( System.in );
 
-		char[] number = num.toCharArray();
-		int numLength = number.length;
+			System.out.println( "This program will add the digits of any positive number." );
+			System.out.print( "Please enter a number:" );
+			String num = input.next();
+			long start = System.currentTimeMillis();
 
-		int sum = 0;
+			input.close();
+			char[] number = num.toCharArray();
+			int numLength = number.length;
 
-		for ( int i = 0; i <= numLength - 1; i++ )
-		{
-			sum += Character.getNumericValue( number[i] );
-		}
+			int sum = 0;
 
-		System.out.println( "Sum of digits = " + sum );
+			for ( int i = 0; i <= numLength - 1; i++ )
+				{
+				sum += Character.getNumericValue( number[i] );
+				}
 
-		long end = System.currentTimeMillis();
-		int time = (int) ( end - start );
-		System.out.println( "****The Program took " + time
-							+ "ms to execute.****" );
-		System.out.println( "End of Program." );
-	} // end method main
+			System.out.println( "Sum of digits = " + sum );
 
-} // end class ProblemTemplate
+			long end = System.currentTimeMillis();
+			int time = (int) ( end - start );
+			System.out.println( "****The Program took " + time
+								+ "ms to execute.****" );
+			System.out.println( "End of Program." );
+			} // end method main
+
+	} // end class ProblemTemplate

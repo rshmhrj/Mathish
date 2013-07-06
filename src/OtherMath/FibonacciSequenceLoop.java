@@ -4,45 +4,48 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class FibonacciSequenceLoop
-{
-
-	/**
-	 * @param args
-	 *            This program will generate the first x numbers of the
-	 *            Fibonacci sequence. Starting with 0 and 1, each next number is
-	 *            the result of the addition of the previous two numbers.
-	 */
-	public static void main( String[] args )
 	{
-		Scanner input = new Scanner( System.in );
 
-		System.out.println( "This program will generate the first x numbers of the Fibonacci Sequence." );
-		System.out.println( "Please enter a value for x:" );
-		int num = input.nextInt();
-		long start = System.currentTimeMillis();
+		/**
+		 * @param args
+		 *            This program will generate the first x numbers of the
+		 *            Fibonacci sequence. Starting with 0 and 1, each next
+		 *            number is the result of the addition of the previous two
+		 *            numbers.
+		 */
+		public static void main( String[] args )
+			{
+			Scanner input = new Scanner( System.in );
 
-		ArrayList<Integer> fib = new ArrayList<Integer>();
+			System.out.println( "This program will generate the first x numbers of the Fibonacci Sequence." );
+			System.out.println( "Please enter a value for x:" );
+			int num = input.nextInt();
+			input.close();
+			long start = System.currentTimeMillis();
 
-		// populate the first two members of the sequence, 0 and 1.
-		fib.add( 0 );
-		fib.add( 1 );
+			ArrayList<Integer> fib = new ArrayList<Integer>();
 
-		for ( int fNum = 1; fNum < num - 1; fNum++ )
-		{
-			int holder = fib.get( fNum - 1 ) + fib.get( fNum );
-			fib.add( holder );
-		}
+			// populate the first two members of the sequence, 0 and 1.
+			fib.add( 0 );
+			fib.add( 1 );
 
-		for ( int i = 0; i <= num - 1; i++ )
-		{
-			System.out.println( "Fibonacci Sequence[" + i + "]: " + fib.get( i ) );
-		}
+			for ( int fNum = 1; fNum < num - 1; fNum++ )
+				{
+				int holder = fib.get( fNum - 1 ) + fib.get( fNum );
+				fib.add( holder );
+				}
 
-		long end = System.currentTimeMillis();
-		int time = (int) ( end - start );
-		System.out.println( "****The Program took " + time
-							+ "ms to execute.****" );
-		System.out.println( "End of Program." );
-	} // end method main
+			for ( int i = 0; i <= num - 1; i++ )
+				{
+				System.out.println( "Fibonacci Sequence[" + i + "]: "
+									+ fib.get( i ) );
+				}
 
-} // end class ProblemTemplate
+			long end = System.currentTimeMillis();
+			int time = (int) ( end - start );
+			System.out.println( "****The Program took " + time
+								+ "ms to execute.****" );
+			System.out.println( "End of Program." );
+			} // end method main
+
+	} // end class ProblemTemplate
