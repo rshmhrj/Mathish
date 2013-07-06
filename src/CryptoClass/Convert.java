@@ -3,89 +3,86 @@ package CryptoClass;
 public class Convert
 {
 
-   public static String StringToHex(String str)
-   {
-      char[] chars = str.toCharArray();
+	public static String StringToHex( String str )
+	{
+		char[] chars = str.toCharArray();
 
-      StringBuffer hex = new StringBuffer();
-      for (int i = 0; i < chars.length; i++)
-      {
-         hex.append(Integer.toHexString((int) chars[i]));
-      }
-      return hex.toString();
-   }
+		StringBuffer hex = new StringBuffer();
+		for ( int i = 0; i < chars.length; i++ )
+		{
+			hex.append( Integer.toHexString( (int) chars[i] ) );
+		}
+		return hex.toString();
+	}
 
+	public static String HexToString( String hex )
+	{
+		StringBuilder sb = new StringBuilder();
+		StringBuilder temp = new StringBuilder();
 
-   public static String HexToString(String hex)
-   {
-      StringBuilder sb = new StringBuilder();
-      StringBuilder temp = new StringBuilder();
+		// 49204c6f7665204a617661 split into two characters 49, 20, 4c...
+		for ( int i = 0; i < hex.length() - 1; i += 2 )
+		{
 
-      // 49204c6f7665204a617661 split into two characters 49, 20, 4c...
-      for (int i = 0; i < hex.length() - 1; i += 2)
-      {
+			// grab the hex in pairs
+			String output = hex.substring( i, ( i + 2 ) );
+			// convert hex to decimal
+			int decimal = Integer.parseInt( output, 16 );
+			// convert the decimal to character
+			sb.append( (char) decimal );
 
-         // grab the hex in pairs
-         String output = hex.substring(i, (i + 2));
-         // convert hex to decimal
-         int decimal = Integer.parseInt(output, 16);
-         // convert the decimal to character
-         sb.append((char) decimal);
+			temp.append( decimal );
+		}
+		System.out.println( "Decimal : " + temp.toString() );
 
-         temp.append(decimal);
-      }
-      System.out.println("Decimal : " + temp.toString());
+		return sb.toString();
+	}
 
-      return sb.toString();
-   }
+	public static String DecimalToHex( int dec )
+	{
+		String hex = "";
 
+		StringBuilder sb = new StringBuilder();
+		StringBuilder temp = new StringBuilder();
 
-   public static String DecimalToHex(int dec)
-   {
-      String hex = "";
+		// 49204c6f7665204a617661 split into two characters 49, 20, 4c...
+		for ( int i = 0; i < hex.length() - 1; i += 2 )
+		{
 
-      StringBuilder sb = new StringBuilder();
-      StringBuilder temp = new StringBuilder();
+			// grab the hex in pairs
+			String output = hex.substring( i, ( i + 2 ) );
+			// convert hex to decimal
+			int decimal = Integer.parseInt( output, 16 );
+			// convert the decimal to character
+			sb.append( (char) decimal );
 
-      // 49204c6f7665204a617661 split into two characters 49, 20, 4c...
-      for (int i = 0; i < hex.length() - 1; i += 2)
-      {
+			temp.append( decimal );
+		}
+		System.out.println( "Decimal : " + temp.toString() );
 
-         // grab the hex in pairs
-         String output = hex.substring(i, (i + 2));
-         // convert hex to decimal
-         int decimal = Integer.parseInt(output, 16);
-         // convert the decimal to character
-         sb.append((char) decimal);
+		return sb.toString();
+	}
 
-         temp.append(decimal);
-      }
-      System.out.println("Decimal : " + temp.toString());
+	public static String HexToDecimal( String hex )
+	{
+		StringBuilder sb = new StringBuilder();
+		StringBuilder temp = new StringBuilder();
 
-      return sb.toString();
-   }
+		// 49204c6f7665204a617661 split into two characters 49, 20, 4c...
+		for ( int i = 0; i < hex.length() - 1; i += 2 )
+		{
 
+			// grab the hex in pairs
+			String output = hex.substring( i, ( i + 2 ) );
+			// convert hex to decimal
+			int decimal = Integer.parseInt( output, 16 );
+			// convert the decimal to character
+			sb.append( (char) decimal );
 
-   public static String HexToDecimal(String hex)
-   {
-      StringBuilder sb = new StringBuilder();
-      StringBuilder temp = new StringBuilder();
+			temp.append( decimal );
+		}
+		System.out.println( "Decimal : " + temp.toString() );
 
-      // 49204c6f7665204a617661 split into two characters 49, 20, 4c...
-      for (int i = 0; i < hex.length() - 1; i += 2)
-      {
-
-         // grab the hex in pairs
-         String output = hex.substring(i, (i + 2));
-         // convert hex to decimal
-         int decimal = Integer.parseInt(output, 16);
-         // convert the decimal to character
-         sb.append((char) decimal);
-
-         temp.append(decimal);
-      }
-      System.out.println("Decimal : " + temp.toString());
-
-      return sb.toString();
-   }
+		return sb.toString();
+	}
 }
